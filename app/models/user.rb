@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   def friendship_status(user)
     friendship = Friendship.where(user_id: [self.id, user.id], friend_id: [self.id, user.id])
     unless friendship.any?
-      returns "not_friends"
+      return "not_friends"
     else
       if friendship.first.state == "active"
         return "friends"
