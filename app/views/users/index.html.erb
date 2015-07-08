@@ -2,10 +2,10 @@
   <h2>People</h2>
   <div class="btn-group btn-group" role="group" aria-label="...">
     <div class="btn-group" role="group">
-      <%= link_to "Everyone", users_path, class: "btn btn-default" %>
-      <%= link_to "Friends", users_path(people: "friends"), class: "btn btn-default" %>
-      <%= link_to "Requests", users_path(people: "requests"), class: "btn btn-default" %>
-      <%= link_to "Pending", users_path(people: "pending"), class: "btn btn-default" %>
+      <%= link_to "Everyone", users_path, class: "btn btn-default #{ 'active' unless params[:people] }" %>
+      <%= link_to "Friends", users_path(people: "friends"), class: "btn btn-default #{'active' if params[:people] == 'friends'}" %>
+      <%= link_to "Requests", users_path(people: "requests"), class: "btn btn-default #{'active' if params[:people] == 'requests'}" %>
+      <%= link_to "Pending", users_path(people: "pending"), class: "btn btn-default #{'active' if params[:people] == 'pending'}" %>
     </div>
   </div>
 </div>
