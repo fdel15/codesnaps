@@ -1,12 +1,19 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:create]
-  before_action :set_friendship, only: [:destroy]
+  before_action :set_friendship, only: [:destroy, :accept]
 
   def create
     @friendship = current_user.request_friendship(@user)
     respond_to do |format|
       format.html { redirect_to users_path, notice: "Friendship Created"}
+    end
+  end
+
+  def accept
+    @friendship.accept_friendship
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: "Friendship Accepted"}
     end
   end
 
@@ -16,6 +23,7 @@ class FriendshipsController < ApplicationController
       format.html { redirect_to users_path, notice: "Friendship Deleted"}
     end
   end
+
 
   private
 
