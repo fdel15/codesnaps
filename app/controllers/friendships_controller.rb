@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
 
   def create
     @friendship = current_user.request_friendship(@user)
@@ -7,5 +8,11 @@ class FriendshipsController < ApplicationController
       format.html { redirect_to users_path, notice: "Friendship Created"}
     end
   end
+
+  private
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 
 end
