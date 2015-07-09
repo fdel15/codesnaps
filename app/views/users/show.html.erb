@@ -14,4 +14,30 @@
         <small><%= @user.bio %></small>
       </div>
     </div>
+  </div>
 </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- Friend Zone -->
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Friends (<%= @user.active_friends.size %>)
+          </div>
+          <div class="panel-body">
+            <% @user.active_friends.last(16).each do |user| %>
+              <%= link_to user_path(user.username) do %>
+                <%= gravatar_tag user.email, size: 40 %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- Post Zone -->
+      </div>
+      <div class="col-md-3">
+        <!-- Profile Activity -->
+      </div>
+    </div>
+  </div>
