@@ -9,10 +9,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   private
+
+    def set_post
+      @post = Post.find(params[:id])
+    end
 
     def post_params
       params.require(:post).permit(:content)
