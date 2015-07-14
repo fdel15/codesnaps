@@ -1,0 +1,7 @@
+<div class="jumbotron text-center">
+  <h1>Timeline</h1>
+  <div class="btn-group" role="group" aria-label="Default">
+    <%= link_to "Everything", activities_path, class: "btn btn-default #{'active' unless params[:content]}" %>
+    <%= link_to "Just Posts", activities_path(content: "posts"), class: "btn btn-default #{'active' if params[:content] == 'posts'}" %>
+  </div>
+</div>
