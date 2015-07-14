@@ -14,6 +14,13 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def update
+    @post.udpate(post_params)
+    respond_to do |format|
+      format.html { redirect_to user_path(@post.user.username), notice: "Post Updated" }
+    end
+  end
+
 
   private
 
