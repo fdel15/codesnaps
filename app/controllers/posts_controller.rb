@@ -8,6 +8,8 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to user_path(@post.user.username), notice: "Post Created" }
       end
+    else
+      redirect_to user_path(@post.user.username), notice: "Something Went Wrong"
     end
   end
 
@@ -15,9 +17,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.udpate(post_params)
-    respond_to do |format|
-      format.html { redirect_to user_path(@post.user.username), notice: "Post Updated" }
+    if @post.udpate(post_params)
+      respond_to do |format|
+        format.html { redirect_to user_path(@post.user.username), notice: "Post Updated" }
+      end
+    else
+      redirect_to post_path(@post), notice: "Something Went Wrong"
     end
   end
 
