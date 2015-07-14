@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :set_post, only: [:edit]
+
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
@@ -7,6 +9,9 @@ class PostsController < ApplicationController
         format.html { redirect_to user_path(@post.user.username), notice: "Post Created" }
       end
     end
+  end
+
+  def edit
   end
 
 
