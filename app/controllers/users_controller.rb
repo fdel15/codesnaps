@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @post = Post.new
+    @posts = @user.posts
     @activities = PublicActivity::Activity.where(owner_id: @user.id) + PublicActivity::Activity.where(recipient_id: @user.id)
   end
 
