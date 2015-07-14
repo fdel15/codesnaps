@@ -2,7 +2,8 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
 
   def index
-    @users = current_user.active_friends + current_user
+    @users = current_user.active_friends
+    @users << current_user
     case params[:content]
     when 'posts'
       @activities = PublicActivity::Activity.where(owner: @users, trackable_type: "Post").order('created_at DESC')
