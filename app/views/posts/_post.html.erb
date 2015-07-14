@@ -3,8 +3,10 @@
     <%= gravatar_tag post.user.email, size: 20 %>
     <%= post.user.username %>
     posted about <%= time_ago_in_words(post.created_at) %> ago
-    <%= link_to "edit", edit_post_path(post) %>
-    <%= link_to "delete", post_path(post), method: :delete %>
+    <% if current_user && current_user == post.user %>
+      <%= link_to "edit", edit_post_path(post) %>
+      <%= link_to "delete", post_path(post), method: :delete %>
+    <% end %>
   </div>
   <div class="panel-body">
     <%= raw(post.content_html) %>
