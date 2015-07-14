@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <%= gravatar_tag post.user.email, size: 20 %>
     <%= post.user.username %>
-    about <%= time_ago_in_words(post.created_at) %> ago
+    posted about <%= time_ago_in_words(post.created_at) %> ago
   </div>
   <div class="panel-body">
     <%= raw(post.content_html) %>
