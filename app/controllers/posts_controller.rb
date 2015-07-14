@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post.destroy
     respond_to do |format|
       format.html {redirect_to user_path(@post.user.username), notice: "Post Destroyed"}
+    end
   end
 
 

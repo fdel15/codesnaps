@@ -3,7 +3,7 @@
     <div class="panel-heading">Post</div>
     <div class="panel-body">
       <%= f.error_notification %>
-      <%= f.input :context, required: true, label: false, placeholder: "New Post Content Here" %>
+      <%= f.input :content, required: true, label: false, placeholder: "New Post Content Here", input_html: { class: "form-control" } %>
     </div>
     <div class="panel-footer">
       <%= f.button :submit, class: "btn btn-primary btn-block" %>
